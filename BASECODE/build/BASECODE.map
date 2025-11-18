@@ -291,38 +291,11 @@ Discarded input sections
  .text          0x00000000        0x0 build/system_clock.o
  .data          0x00000000        0x0 build/system_clock.o
  .bss           0x00000000        0x0 build/system_clock.o
- .text.SystemClock_Configgg
-                0x00000000       0xd8 build/system_clock.o
- .debug_info    0x00000000      0x74f build/system_clock.o
- .debug_abbrev  0x00000000       0xfa build/system_clock.o
- .debug_aranges
-                0x00000000       0x20 build/system_clock.o
- .debug_rnglists
-                0x00000000       0x14 build/system_clock.o
- .debug_macro   0x00000000       0xcf build/system_clock.o
  .debug_macro   0x00000000      0xaea build/system_clock.o
- .debug_macro   0x00000000       0x2e build/system_clock.o
- .debug_macro   0x00000000       0x3b build/system_clock.o
  .debug_macro   0x00000000       0x22 build/system_clock.o
- .debug_macro   0x00000000       0x8e build/system_clock.o
- .debug_macro   0x00000000       0x51 build/system_clock.o
  .debug_macro   0x00000000      0x103 build/system_clock.o
  .debug_macro   0x00000000       0x6a build/system_clock.o
  .debug_macro   0x00000000      0x1df build/system_clock.o
- .debug_macro   0x00000000       0x1c build/system_clock.o
- .debug_macro   0x00000000       0x22 build/system_clock.o
- .debug_macro   0x00000000       0xfb build/system_clock.o
- .debug_macro   0x00000000     0x1305 build/system_clock.o
- .debug_macro   0x00000000      0x11f build/system_clock.o
- .debug_macro   0x00000000       0x27 build/system_clock.o
- .debug_macro   0x00000000    0x25b9b build/system_clock.o
- .debug_macro   0x00000000       0x6d build/system_clock.o
- .debug_line    0x00000000      0x459 build/system_clock.o
- .debug_str     0x00000000    0xe7228 build/system_clock.o
- .comment       0x00000000       0x47 build/system_clock.o
- .debug_frame   0x00000000       0x20 build/system_clock.o
- .ARM.attributes
-                0x00000000       0x32 build/system_clock.o
  .group         0x00000000        0xc build/system_stm32h7xx.o
  .group         0x00000000        0xc build/system_stm32h7xx.o
  .group         0x00000000        0xc build/system_stm32h7xx.o
@@ -934,16 +907,16 @@ LOAD /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-no
                 0x08000378                SAI1_IRQHandler
                 0x08000378                DMA1_Stream3_IRQHandler
  *fill*         0x0800037a        0x2 
- .text.SystemInit
-                0x0800037c       0xe4 build/system_stm32h7xx.o
-                0x0800037c                SystemInit
- .text.ExitRun0Mode
-                0x08000460        0x2 build/system_stm32h7xx.o
-                0x08000460                ExitRun0Mode
- *fill*         0x08000462        0x2 
  .text.SystemClock_Config
-                0x08000464      0x138 build/main.o
-                0x08000464                SystemClock_Config
+                0x0800037c      0x138 build/system_clock.o
+                0x0800037c                SystemClock_Config
+ .text.SystemInit
+                0x080004b4       0xe4 build/system_stm32h7xx.o
+                0x080004b4                SystemInit
+ .text.ExitRun0Mode
+                0x08000598        0x2 build/system_stm32h7xx.o
+                0x08000598                ExitRun0Mode
+ *fill*         0x0800059a        0x2 
  .text.startup.main
                 0x0800059c       0x44 build/main.o
                 0x0800059c                main
@@ -1131,84 +1104,127 @@ LOAD /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-no
  .ARM.attributes
                 0x00000052       0x21 build/startup_stm32h743xx.o
  .ARM.attributes
-                0x00000073       0x32 build/system_stm32h7xx.o
+                0x00000073       0x32 build/system_clock.o
  .ARM.attributes
-                0x000000a5       0x32 build/main.o
+                0x000000a5       0x32 build/system_stm32h7xx.o
  .ARM.attributes
-                0x000000d7       0x32 build/systick.o
+                0x000000d7       0x32 build/main.o
  .ARM.attributes
-                0x00000109       0x32 /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-init.o)
+                0x00000109       0x32 build/systick.o
  .ARM.attributes
-                0x0000013b       0x32 /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-lock.o)
+                0x0000013b       0x32 /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-init.o)
  .ARM.attributes
-                0x0000016d       0x32 /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-__call_atexit.o)
+                0x0000016d       0x32 /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-lock.o)
  .ARM.attributes
-                0x0000019f       0x32 /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-atexit.o)
+                0x0000019f       0x32 /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-__call_atexit.o)
  .ARM.attributes
-                0x000001d1       0x32 /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-fini.o)
+                0x000001d1       0x32 /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-atexit.o)
  .ARM.attributes
-                0x00000203       0x32 /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-__atexit.o)
+                0x00000203       0x32 /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-fini.o)
  .ARM.attributes
-                0x00000235       0x32 /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m+dp/hard/crtend.o
+                0x00000235       0x32 /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-__atexit.o)
  .ARM.attributes
-                0x00000267       0x20 /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m+dp/hard/crtn.o
+                0x00000267       0x32 /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m+dp/hard/crtend.o
+ .ARM.attributes
+                0x00000299       0x20 /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m+dp/hard/crtn.o
 
 .comment        0x00000000       0x46
- .comment       0x00000000       0x46 build/system_stm32h7xx.o
+ .comment       0x00000000       0x46 build/system_clock.o
                                  0x47 (size before relaxing)
+ .comment       0x00000046       0x47 build/system_stm32h7xx.o
  .comment       0x00000046       0x47 build/main.o
  .comment       0x00000046       0x47 build/systick.o
 
-.debug_line     0x00000000      0xe5a
+.debug_line     0x00000000     0x10e9
  .debug_line    0x00000000       0x7b build/startup_stm32h743xx.o
- .debug_line    0x0000007b      0x5a0 build/system_stm32h7xx.o
- .debug_line    0x0000061b      0x540 build/main.o
- .debug_line    0x00000b5b      0x2ff build/systick.o
+ .debug_line    0x0000007b      0x4d9 build/system_clock.o
+ .debug_line    0x00000554      0x5a0 build/system_stm32h7xx.o
+ .debug_line    0x00000af4      0x2f6 build/main.o
+ .debug_line    0x00000dea      0x2ff build/systick.o
 
 .debug_line_str
                 0x00000000       0x45
  .debug_line_str
                 0x00000000       0x45 build/startup_stm32h743xx.o
 
-.debug_info     0x00000000     0x18c2
+.debug_info     0x00000000     0x1ce0
  .debug_info    0x00000000       0x30 build/startup_stm32h743xx.o
- .debug_info    0x00000030      0xd2f build/system_stm32h7xx.o
- .debug_info    0x00000d5f      0xa1c build/main.o
- .debug_info    0x0000177b      0x147 build/systick.o
+ .debug_info    0x00000030      0x929 build/system_clock.o
+ .debug_info    0x00000959      0xd2f build/system_stm32h7xx.o
+ .debug_info    0x00001688      0x511 build/main.o
+ .debug_info    0x00001b99      0x147 build/systick.o
 
-.debug_abbrev   0x00000000      0x3d7
+.debug_abbrev   0x00000000      0x48e
  .debug_abbrev  0x00000000       0x24 build/startup_stm32h743xx.o
- .debug_abbrev  0x00000024      0x16b build/system_stm32h7xx.o
- .debug_abbrev  0x0000018f      0x14f build/main.o
- .debug_abbrev  0x000002de       0xf9 build/systick.o
+ .debug_abbrev  0x00000024       0xe6 build/system_clock.o
+ .debug_abbrev  0x0000010a      0x16b build/system_stm32h7xx.o
+ .debug_abbrev  0x00000275      0x120 build/main.o
+ .debug_abbrev  0x00000395       0xf9 build/systick.o
 
-.debug_aranges  0x00000000       0xb0
+.debug_aranges  0x00000000       0xc8
  .debug_aranges
                 0x00000000       0x28 build/startup_stm32h743xx.o
  .debug_aranges
-                0x00000028       0x30 build/system_stm32h7xx.o
+                0x00000028       0x20 build/system_clock.o
  .debug_aranges
-                0x00000058       0x28 build/main.o
+                0x00000048       0x30 build/system_stm32h7xx.o
  .debug_aranges
-                0x00000080       0x30 build/systick.o
+                0x00000078       0x20 build/main.o
+ .debug_aranges
+                0x00000098       0x30 build/systick.o
 
-.debug_str      0x00000000    0xea9e9
- .debug_str     0x00000000    0xea9e9 build/startup_stm32h743xx.o
+.debug_str      0x00000000    0xeaa03
+ .debug_str     0x00000000    0xeaa03 build/startup_stm32h743xx.o
                                  0x61 (size before relaxing)
- .debug_str     0x000ea9e9    0xeab13 build/system_stm32h7xx.o
- .debug_str     0x000ea9e9    0xe72b2 build/main.o
- .debug_str     0x000ea9e9    0xe6ec2 build/systick.o
+ .debug_str     0x000eaa03    0xe7274 build/system_clock.o
+ .debug_str     0x000eaa03    0xeab13 build/system_stm32h7xx.o
+ .debug_str     0x000eaa03    0xe70ee build/main.o
+ .debug_str     0x000eaa03    0xe6ec2 build/systick.o
 
 .debug_rnglists
-                0x00000000       0x73
+                0x00000000       0x80
  .debug_rnglists
                 0x00000000       0x19 build/startup_stm32h743xx.o
  .debug_rnglists
-                0x00000019       0x21 build/system_stm32h7xx.o
+                0x00000019       0x14 build/system_clock.o
  .debug_rnglists
-                0x0000003a       0x1a build/main.o
+                0x0000002d       0x21 build/system_stm32h7xx.o
  .debug_rnglists
-                0x00000054       0x1f build/systick.o
+                0x0000004e       0x13 build/main.o
+ .debug_rnglists
+                0x00000061       0x1f build/systick.o
+
+.debug_macro    0x00000000    0x278dd
+ .debug_macro   0x00000000       0xcf build/system_clock.o
+ .debug_macro   0x000000cf       0x2e build/system_clock.o
+ .debug_macro   0x000000fd       0x3b build/system_clock.o
+ .debug_macro   0x00000138       0x8e build/system_clock.o
+ .debug_macro   0x000001c6       0x51 build/system_clock.o
+ .debug_macro   0x00000217       0x1c build/system_clock.o
+ .debug_macro   0x00000233       0x22 build/system_clock.o
+ .debug_macro   0x00000255       0xfb build/system_clock.o
+ .debug_macro   0x00000350     0x1305 build/system_clock.o
+ .debug_macro   0x00001655      0x11f build/system_clock.o
+ .debug_macro   0x00001774       0x27 build/system_clock.o
+ .debug_macro   0x0000179b    0x25b9b build/system_clock.o
+ .debug_macro   0x00027336       0x6d build/system_clock.o
+ .debug_macro   0x000273a3      0x17e build/system_stm32h7xx.o
+ .debug_macro   0x00027521       0x7b build/system_stm32h7xx.o
+ .debug_macro   0x0002759c      0x19b build/system_stm32h7xx.o
+ .debug_macro   0x00027737       0xd7 build/main.o
+ .debug_macro   0x0002780e       0xcf build/systick.o
+
+.debug_frame    0x00000000      0x294
+ .debug_frame   0x00000000       0x20 build/system_clock.o
+ .debug_frame   0x00000020       0x4c build/system_stm32h7xx.o
+ .debug_frame   0x0000006c       0x28 build/main.o
+ .debug_frame   0x00000094       0x40 build/systick.o
+ .debug_frame   0x000000d4       0x2c /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-init.o)
+ .debug_frame   0x00000100       0xb0 /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-lock.o)
+ .debug_frame   0x000001b0       0x5c /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-__call_atexit.o)
+ .debug_frame   0x0000020c       0x20 /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-atexit.o)
+ .debug_frame   0x0000022c       0x34 /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-fini.o)
+ .debug_frame   0x00000260       0x34 /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-__atexit.o)
 
 .debug_loclists
                 0x00000000      0x156
@@ -1216,21 +1232,3 @@ LOAD /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-no
                 0x00000000      0x13f build/system_stm32h7xx.o
  .debug_loclists
                 0x0000013f       0x17 build/systick.o
-
-.debug_macro    0x00000000      0x53a
- .debug_macro   0x00000000      0x17e build/system_stm32h7xx.o
- .debug_macro   0x0000017e       0x7b build/system_stm32h7xx.o
- .debug_macro   0x000001f9      0x19b build/system_stm32h7xx.o
- .debug_macro   0x00000394       0xd7 build/main.o
- .debug_macro   0x0000046b       0xcf build/systick.o
-
-.debug_frame    0x00000000      0x284
- .debug_frame   0x00000000       0x4c build/system_stm32h7xx.o
- .debug_frame   0x0000004c       0x38 build/main.o
- .debug_frame   0x00000084       0x40 build/systick.o
- .debug_frame   0x000000c4       0x2c /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-init.o)
- .debug_frame   0x000000f0       0xb0 /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-lock.o)
- .debug_frame   0x000001a0       0x5c /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-__call_atexit.o)
- .debug_frame   0x000001fc       0x20 /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-atexit.o)
- .debug_frame   0x0000021c       0x34 /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-fini.o)
- .debug_frame   0x00000250       0x34 /opt/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-__atexit.o)
