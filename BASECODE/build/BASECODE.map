@@ -1127,12 +1127,12 @@ LOAD /opt/st/stm32cubeclt_1.19.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eab
  .debug_line_str
                 0x00000000       0x45 build/startup_stm32h743xx.o
 
-.debug_info     0x00000000     0x1cf3
+.debug_info     0x00000000     0x1cf2
  .debug_info    0x00000000       0x30 build/startup_stm32h743xx.o
  .debug_info    0x00000030      0x93b build/system_clock.o
  .debug_info    0x0000096b      0xd2f build/system_stm32h7xx.o
- .debug_info    0x0000169a      0x512 build/main.o
- .debug_info    0x00001bac      0x147 build/systick.o
+ .debug_info    0x0000169a      0x511 build/main.o
+ .debug_info    0x00001bab      0x147 build/systick.o
 
 .debug_abbrev   0x00000000      0x4ad
  .debug_abbrev  0x00000000       0x24 build/startup_stm32h743xx.o
