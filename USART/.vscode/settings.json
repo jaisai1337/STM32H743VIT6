@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "core_cm7.h": "c",
+        "stm32h743xx.h": "c",
+        "cstdlib": "c",
+        "system_clock.h": "c",
+        "stdio.h": "c"
+    },
+    "cortex-debug.variableUseNaturalFormat": false
+}

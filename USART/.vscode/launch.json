@@ -1,0 +1,46 @@
+// Configure debug launch settings
+// Feel free to copy these and modify them for your debugger and MCU
+{
+    "version": "0.2.0",
+    "projectName": "test-f407vg",
+    "configurations": [
+        {
+            "name": "STlink launch",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/BASECODE.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "stutil",
+            "device": "STM32H743VI",
+            "interface": "swd",
+            "runToMain": true, // else it starts at reset handler - not interested
+            "svdFile": "STM32H743.svd", // Include svd to watch device peripherals
+            "swoConfig": {} // currently (v1.7.0) not supported
+        },
+        {
+            "name": "STlink attach",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/BASECODE.elf",
+            "request": "attach",
+            "type": "cortex-debug",
+            "servertype": "stutil",
+            "device": "STM32H743VI",
+            "interface": "swd",
+            "runToEntryPoint": "main", // else it starts at reset handler - not interested
+            "svdFile": "STM32H743.svd", // Include svd to watch device peripherals
+            "swoConfig": {
+                "enabled": true,
+                "cpuFrequency": 480000000,
+                "swoFrequency": 2000000,
+                "source": "probe",
+                "decoders": [
+                    {
+                        "type": "console",
+                        "label": "SWO",
+                        "port": 0
+                    }
+                ]
+            }
+        },
+    ]
+}
