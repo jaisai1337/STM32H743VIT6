@@ -85,6 +85,11 @@ $(BIN): $(ELF)
 $(HEX): $(ELF)
 	$(OBJCOPY) -O verilog $< $@
 
+#  Flashing
+flash: $(BIN)
+	@echo "Flashing target..."
+	JLinkExe -device STM32H743VI -if SWD -speed 4000 -autoconnect 1 -CommanderScript jflash.jlink
+
 #  Clean
 clean:
 	@echo "Cleaning build directory..."

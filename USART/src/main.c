@@ -5,7 +5,7 @@
 #include "system_clock.h"
 #include <stdio.h>
 
-USART_TypeDef *UARTx = USART1;
+USART_TypeDef *UARTx = USART2;
 int main(void)
 {
     SystemClock_Config(); // Configure system clock to 480 MHz
