@@ -45,7 +45,7 @@ void SystemClock_Config(void)
     RCC->PLLCKSELR = (RCC->PLLCKSELR & ~RCC_PLLCKSELR_PLLSRC_Msk) | RCC_PLLCKSELR_PLLSRC_HSI;
 
     // Configure Divider M = 4
-    RCC->PLLCKSELR = (RCC->PLLCKSELR & ~RCC_PLLCKSELR_DIVM1_Msk) | (4U << RCC_PLLCKSELR_DIVM1_Pos);
+    RCC->PLLCKSELR = (RCC->PLLCKSELR & ~RCC_PLLCKSELR_DIVM1_Msk) | (8U << RCC_PLLCKSELR_DIVM1_Pos);
 
     // Configure Multiplier N = 60
     // Value written is N - 1
@@ -53,7 +53,7 @@ void SystemClock_Config(void)
 
     // Configure Divider P = 2 (System Clock)
     // Value written is P - 1
-    RCC->PLL1DIVR = (RCC->PLL1DIVR & ~RCC_PLL1DIVR_P1_Msk) | ((2U - 1U) << RCC_PLL1DIVR_P1_Pos);
+    RCC->PLL1DIVR = (RCC->PLL1DIVR & ~RCC_PLL1DIVR_P1_Msk) | ((1U - 1U) << RCC_PLL1DIVR_P1_Pos);
 
     // Configure Divider Q = 2 (Peripheral Clock)
     RCC->PLL1DIVR = (RCC->PLL1DIVR & ~RCC_PLL1DIVR_Q1_Msk) | ((2U - 1U) << RCC_PLL1DIVR_Q1_Pos);
@@ -69,6 +69,9 @@ void SystemClock_Config(void)
     RCC->PLLCFGR &= ~RCC_PLLCFGR_PLL1VCOSEL;
     RCC->PLLCFGR &= ~RCC_PLLCFGR_PLL1FRACEN;
     RCC->PLL1FRACR = 0;
+
+    // Enable PLL1 divider outputs (P, Q, R)
+    RCC->PLLCFGR |= RCC_PLLCFGR_DIVP1EN | RCC_PLLCFGR_DIVQ1EN | RCC_PLLCFGR_DIVR1EN;
 
     // Enable PLL1
     RCC->CR |= RCC_CR_PLL1ON;
@@ -90,7 +93,9 @@ void SystemClock_Config(void)
     /* 6. Flash Latency */
     // For 480MHz at VOS0, we need appropriate wait states (Latency 4)
     // Note: Latency must be set BEFORE increasing clock frequency
-    FLASH->ACR = (FLASH->ACR & ~FLASH_ACR_LATENCY_Msk) | FLASH_ACR_LATENCY_4WS;
+    // FLASH->ACR = (FLASH->ACR & ~FLASH_ACR_LATENCY_Msk) | FLASH_ACR_LATENCY_4WS;
+    FLASH->ACR = (FLASH->ACR & ~(FLASH_ACR_LATENCY_Msk | FLASH_ACR_WRHIGHFREQ_Msk)) | 
+        FLASH_ACR_LATENCY_4WS | FLASH_ACR_WRHIGHFREQ_1;
     while ((FLASH->ACR & FLASH_ACR_LATENCY_Msk) != FLASH_ACR_LATENCY_4WS);
 
     /* 7. System Clock Switch */

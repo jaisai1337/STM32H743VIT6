@@ -34,6 +34,8 @@ ELF  = $(BUILD_DIR)/$(PROJECT).elf
 BIN  = $(BUILD_DIR)/$(PROJECT).bin
 HEX  = $(BUILD_DIR)/$(PROJECT).hex
 MAP  = $(BUILD_DIR)/$(PROJECT).map
+JLINK = $(BUILD_DIR)/$(PROJECT).jlink
+
 
 #  Flags
 INCLUDES = \
@@ -46,7 +48,7 @@ ASMFLAGS = $(CPU) -g3 -x assembler-with-cpp
 LDFLAGS = $(CPU) -Wall -Os -TSTM32H743XX_FLASH.ld -Wl,--gc-sections -Wl,-Map=$(MAP) -Wl,--start-group -specs=nano.specs -lnosys -lm -Wl,--end-group # -lc -u _printf_float
 
 #  Default target
-all: $(BUILD_DIR) $(ELF) $(BIN) $(HEX)
+all: $(BUILD_DIR) $(ELF) $(BIN) $(HEX)  $(JLINK)
 	@echo "Build complete: $(PROJECT)"
 
 #  Create build directory
@@ -55,19 +57,15 @@ $(BUILD_DIR):
 
 #  Build rules
 $(BUILD_DIR)/%.o: $(SYS_DIR)/%.s
-	@echo "Assembling $<"
 	$(CC) $(ASMFLAGS) -c $< -o $@
 
 $(BUILD_DIR)/%.o: $(SYS_DIR)/%.c
-	@echo "Compiling $<"
 	$(CC) $(CFLAGS) -c $< -o $@
 	
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
-	@echo "Compiling $<"
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD_DIR)/%.o: $(DRIVER_DIR)/src/%.c
-	@echo "Compiling $<"
 	$(CC) $(CFLAGS) -c $< -o $@
 
 
@@ -83,17 +81,24 @@ $(BIN): $(ELF)
 	$(OBJCOPY) -O binary $< $@
 
 $(HEX): $(ELF)
-	$(OBJCOPY) -O verilog $< $@
+	$(OBJCOPY) -O ihex $< $@
 
 #  Flashing
 flash: $(BIN)
 	@echo "Flashing target..."
-	JLinkExe -device STM32H743VI -if SWD -speed 4000 -autoconnect 1 -CommanderScript jflash.jlink
+	JLinkExe -device STM32H743VI -if SWD -speed 4000 -autoconnect 1 -CommandFile jflash.jlink
+
+$(JLINK): $(HEX) hex_to_jlink_w4.py
+	@echo "Generating J-Link w4 script..."
+	python3 hex_to_jlink_w4.py $(HEX) $(JLINK)
+	@echo "Done: $(JLINK)"
 
 #  Clean
 clean:
-	@echo "Cleaning build directory..."
 	rm -rf $(BUILD_DIR)
+
+manual_flash:
+	JLinkExe -device STM32H743VI -if SWD -speed 4000 -autoconnect 1 -CommandFile $(JLINK)
 
 #  Include dependency files
 -include $(DEPS)
@@ -132,4 +137,4 @@ print_size:
 			r = ""; for (i = 0; i < n; i++) r = r s; return r; \
 		}'
 
-.PHONY: all flash clean print_size
+.PHONY: all flash clean print_size manual_flash

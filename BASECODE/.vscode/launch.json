@@ -8,7 +8,7 @@
       "servertype": "jlink",
       "device": "STM32H743VI",
       "interface": "swd",
-      "executable": "${workspaceFolder}/build/USART.elf",
+      "executable": "${workspaceFolder}/build/BASECODE.elf",
       "runToEntryPoint": "main",
       "svdFile": "${workspaceFolder}/STM32H743.svd",
       "postRestartCommands": ["monitor reset"],

@@ -11,8 +11,8 @@ void SysTick_Handler(void)
 
 void SysTick_Init(void)
 {
-    // SysTick = 1 ms
-    SysTick->LOAD = (480000 - 1);     // 64 MHz / 1000 = 64000
+    // SysTick = 1 ms (LOAD has 24-bit resolution, SystemCoreClock / 1000 - 1)
+    SysTick->LOAD = (SystemCoreClock / 1000) - 1;
     SysTick->VAL  = 0;
     SysTick->CTRL = SysTick_CTRL_CLKSOURCE_Msk | SysTick_CTRL_TICKINT_Msk | SysTick_CTRL_ENABLE_Msk;
 }
